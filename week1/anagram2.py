@@ -21,6 +21,7 @@ def readfile(filename):
     f.close()
     return list
 
+#The dictionary is sorted by score, so look for anagrams from before.
 def search_anagram(word,dic):
   target=collections.Counter(word)
   for dic_item in dic:
