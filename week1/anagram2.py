@@ -24,10 +24,10 @@ def readfile(filename):
 def search_anagram(word,dic):
   target=collections.Counter(word)
   for dic_item in dic:
-    is_anagram=1
+    is_anagram = 1
     for key in dic_item[1].keys():
       if target[key] < dic_item[1][key]:
-        is_anagram=0
+        is_anagram = 0
         break
     if is_anagram == 1:
       return dic_item[0]
