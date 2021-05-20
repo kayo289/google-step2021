@@ -7,7 +7,7 @@ def calc_score(word):
         score += score_alph[ord(char) - ord('a')]
     return score
 
-#Sort the dictionary by descending score
+# Sort the dictionary by descending score.
 def sort_dictionary(dic):
     sort_dic = []
     for word in dic:
@@ -21,13 +21,14 @@ def readfile(filename):
     f.close()
     return list
 
+# The dictionary is sorted by score, so look for anagrams from before.
 def search_anagram(word,dic):
   target=collections.Counter(word)
   for dic_item in dic:
-    is_anagram=1
+    is_anagram = 1
     for key in dic_item[1].keys():
       if target[key] < dic_item[1][key]:
-        is_anagram=0
+        is_anagram = 0
         break
     if is_anagram == 1:
       return dic_item[0]
