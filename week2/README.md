@@ -4,7 +4,7 @@
 行列積を求めるプログラムを書いて、行列のサイズNと実行時間の関係を調べてみよう
 
 ## 回答
-Nと実行時間は以下のグラフの通り
+Nと実行時間は以下のグラフの通り 
 ![image](https://user-images.githubusercontent.com/39555606/118940074-52762800-b98b-11eb-888d-d7bbe372e089.png)
 
 # homework2
