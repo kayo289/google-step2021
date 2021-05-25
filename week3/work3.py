@@ -65,15 +65,9 @@ def tokenize(line):
 
 def calc_quote(tokens):
   ans = 0
-#   print("==tokens==")
-#   print(tokens)
   ans_i = 0
-  # calc_i
-#   ans_i = []
   for i in range(2):
       index = 1
-    #   print("==💡tokens(calc_quote)==")
-    #   print(tokens)
       while tokens[index]['type'] != 'RPARENTHESIS':
           if tokens[index]['type'] == 'NUMBER':
               if tokens[index - 1]['type'] == 'PLUS' and i == 1:
@@ -96,30 +90,15 @@ def calc_quote(tokens):
                   tokens[index-1:index+1] = []
                   ans_i += 2
                   index -= 1
-            #   elif tokens[index - 1]['type'] == 'LPARENTHESIS':
-            #       (num, quote_i) = calc_quote(tokens[index:])
-            #       tokens[index - 1] = {'type': 'NUMBER', 'number': num}
-            #       print("index"+str(index)+",quote_i"+str(quote_i))
-            #       tokens[index: index + quote_i + 1] = []
-            #       ans_i += quote_i + 1
-            #       print("==🌸")
-                #   print(tokens)
               else:
                   index += 1
           elif tokens[index]['type'] == 'LPARENTHESIS':
              (num, quote_i) = calc_quote(tokens[index+1:])
-             print("==💡==")
-             print(tokens)
              tokens[index] = {'type': 'NUMBER', 'number': num}
-             print("index"+str(index)+",quote_i:"+str(quote_i)+"i:"+str(i))
              tokens[index+1: index + quote_i + 2] = []
              ans_i += quote_i + 1
-             print("==🌸")
-             print(tokens)
           else:
               index += 1
-  print("calc_quote:")
-  print(tokens)
   ans = tokens[0]['number']
   return ans, ans_i+1
 
@@ -127,10 +106,6 @@ def evaluate(tokens):
   for i in range(2):
       index = 0
       while index < len(tokens):
-          print("==")
-          print("i:"+str(i)+"index;"+str(index))
-        #   print(tokens)
-          print(tokens[index]['type'])
           if tokens[index]['type'] == 'NUMBER' and index != 0:
               print(tokens[index - 1]['type'])
               if tokens[index - 1]['type'] == 'PLUS' and i == 1:
@@ -154,23 +129,14 @@ def evaluate(tokens):
                   index += 1
           elif tokens[index]['type'] == 'LPARENTHESIS':
              (num, quote_i) = calc_quote(tokens[index+1:])
-             print("==💡==")
-             print(tokens)
              tokens[index] = {'type': 'NUMBER', 'number': num}
-             print("index"+str(index)+",quote_i:"+str(quote_i)+"i:"+str(i))
              tokens[index+1: index + quote_i + 2] = []
-             print("==(evaluate)==")
-             print(tokens)
           else:
               index += 1
-  print("==saigo==")
-  print(tokens)
   return tokens[0]['number']
 
 def test(line):
   tokens = tokenize(line)
-  print("==🌸==")
-  print(tokens)
   actual_answer = evaluate(tokens)
   expected_answer = eval(line)
   if abs(actual_answer - expected_answer) < 1e-8:
