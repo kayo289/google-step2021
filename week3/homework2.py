@@ -107,7 +107,6 @@ def evaluate(tokens):
       index = 0
       while index < len(tokens):
           if tokens[index]['type'] == 'NUMBER' and index != 0:
-              print(tokens[index - 1]['type'])
               if tokens[index - 1]['type'] == 'PLUS' and i == 1:
                   tokens[index - 2] = {'type': 'NUMBER', 'number': tokens[index-2]['number'] + tokens[index]['number']}
                   tokens[index-1:index+1] = []
@@ -121,7 +120,6 @@ def evaluate(tokens):
                   tokens[index-1:index+1] = []
                   index -= 1
               elif tokens[index - 1]['type'] == 'TIMES' and i == 0:
-                  print("haita")
                   tokens[index - 2] = {'type': 'NUMBER', 'number': tokens[index-2]['number'] * tokens[index]['number']}
                   tokens[index-1:index+1] = []
                   index -= 1
@@ -147,12 +145,12 @@ def test(line):
 # Add more tests to this function :)
 def run_test():
   print("==== Test started! ====")
-#   test("1+(3+4)")
-#   test("(3+(2))")
-#   test("(7*(3+2))")
-#   test("1.0+2.1-3")
+  test("1+(3+4)")
+  test("(3+(2))")
+  test("(7*(3+2))")
+  test("1.0+2.1-3")
   test("(3.0+4*(2-1))/5")
-#   test("4+6/2+5*3-1+6/2")
+  test("4+6/2+5*3-1+6/2")
   print("==== Test finished! ====\n")
 
 run_test()
