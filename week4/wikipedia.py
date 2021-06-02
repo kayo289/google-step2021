@@ -20,8 +20,6 @@ def get_ans_path(history, start_id, end_id):
     path.insert(0,end_id)
     path.insert(0,target)
     while target != -1 and target != end_id:
-        # print("==target==")
-        # print(target)
         for item in history:
             if item[1] == target:
                 path.insert(0,item[0])
