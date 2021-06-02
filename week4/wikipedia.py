@@ -4,7 +4,7 @@ def get_key(val, my_dict):
     for key, value in my_dict.items():
          if val == value:
              return key
-    return "There is no such Key"
+    return None
 
 def filter_notsame(list_path):
     filter_path = []
@@ -68,7 +68,7 @@ def bfs(sign, pages, links, start_id, end_id):
       for near in nears:
           history.append([node,near]) #[mother, child]
           if near == end_id:
-             print("found!!")
+             print("✅ found!!")
              found = 1
              break
           if sign[near] == -1: # 確認した事がなければ
@@ -77,7 +77,7 @@ def bfs(sign, pages, links, start_id, end_id):
       if found == 1:
           break
   if found == 0:
-      print("not found path")
+      print("⚠️  not link path")
       exit(1)
   else:
       return history
@@ -95,9 +95,12 @@ def main(start_name, end_name):
   history = []
   start_id = get_key(start_name, pages)
   end_id = get_key(end_name, pages)
+  if start_id == None or end_id == None:
+      print("⚠️  start or end does not exist")
+      exit(1)
   history = bfs(sign, pages, links, start_id, end_id)
   path = get_ans_path(history, start_id, end_id)
   print_path(pages, path)
 
 if __name__ == '__main__':
-  main("Google","パワードスーツ")
+  main("Google","カメラ")
