@@ -1,6 +1,14 @@
 from collections import deque
 
 def get_key(val, my_dict):
+    """
+    Return the key based on the value
+    Args:
+       val : dict val
+       my_dict : dict
+    Returns:
+       key: The key that corresponds to val
+    """
     for key, value in my_dict.items():
          if val == value:
              return key
@@ -14,6 +22,15 @@ def filter_notsame(list_path):
     return filter_path
 
 def get_ans_path(history, start_id, end_id):
+    """
+    Obtain the path of the shortest path from the search history.
+    Args:
+        history : Search history
+        start_id : start id
+        end_id : end id
+    Returns:
+        Path : Path from start to end
+    """
     path = []
     history = filter_notsame(history)
     target = history[-1][0]
@@ -54,6 +71,17 @@ def read_links():
   return links
 
 def bfs(sign, pages, links, start_id, end_id):
+  """
+    bfs
+    Args:
+        sign : checked list
+        pages : The id and the page correspond.
+        links : links list
+        start_id : start id
+        end_id : end id
+    Returns:
+        Path : search history list
+  """
   history = []
   found = 0
   queue = deque()
@@ -71,7 +99,7 @@ def bfs(sign, pages, links, start_id, end_id):
              print("✅ found!!")
              found = 1
              break
-          if sign[near] == -1: # 確認した事がなければ
+          if sign[near] == -1: # not checked
               queue.append(near)
               sign[near] = 1
       if found == 1:
