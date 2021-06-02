@@ -19,11 +19,14 @@ def get_ans_path(history, start_id, end_id):
     target = history[-1][0]
     path.insert(0,end_id)
     path.insert(0,target)
-    while target != -1:
+    while target != -1 and target != end_id:
+        # print("==target==")
+        # print(target)
         for item in history:
             if item[1] == target:
                 path.insert(0,item[0])
                 target = item[0]
+                break
     return path[1:]
 
 def read_pages():
@@ -62,15 +65,19 @@ def main(start_name, end_name):
   history.append([-1,start_id])
   while queue:
       node = queue.popleft()
-      nears = links[node]
+      if node in links.keys():
+          nears = links[node]
+      else:
+          continue
       for near in nears:
           history.append([node,near]) #[mother, child]
           if near == end_id:
              print("found!!")
              found = 1
              break
-          queue.append(near)
-          sign[near] = 1
+          if sign[near] == -1:
+              queue.append(near)
+              sign[near] = 1
       if found == 1:
           break
 
@@ -85,4 +92,4 @@ def main(start_name, end_name):
               print(pages[path[i]]+"->",end="")
 
 if __name__ == '__main__':
-  main("Google","カメラ")
+  main("Google","カレー")
