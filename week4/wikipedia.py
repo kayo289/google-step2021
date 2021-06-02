@@ -69,9 +69,8 @@ def main(start_name, end_name):
              print("found!!")
              found = 1
              break
-          if sign[near] == -1: # 確認した事がなければ
-              queue.append(near)
-              sign[near] = 1
+          queue.append(near)
+          sign[near] = 1
       if found == 1:
           break
 
