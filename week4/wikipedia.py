@@ -52,15 +52,10 @@ def read_links():
         links[link[0]] = {link[1]}
   return links
 
-def main(start_name, end_name):
-  pages,sign = read_pages()
-  links = read_links()
+def bfs(sign, pages, links, start_id, end_id):
   history = []
-
   found = 0
   queue = deque()
-  start_id = get_key(start_name, pages)
-  end_id = get_key(end_name, pages)
   queue.append(start_id)
   history.append([-1,start_id])
   while queue:
@@ -75,21 +70,33 @@ def main(start_name, end_name):
              print("found!!")
              found = 1
              break
-          if sign[near] == -1:
+          if sign[near] == -1: # 確認した事がなければ
               queue.append(near)
               sign[near] = 1
       if found == 1:
           break
-
   if found == 0:
       print("not found path")
+      exit(1)
   else:
-      path = get_ans_path(history, start_id, end_id)
-      for i in range(len(path)):
-          if i == len(path) - 1:
-              print(pages[path[i]])
-          else:
-              print(pages[path[i]]+"->",end="")
+      return history
+
+def print_path(pages, path):
+  for i in range(len(path)):
+    if i == len(path) - 1:
+      print(pages[path[i]])
+    else:
+      print(pages[path[i]]+"->",end="")
+
+def main(start_name, end_name):
+  pages,sign = read_pages()
+  links = read_links()
+  history = []
+  start_id = get_key(start_name, pages)
+  end_id = get_key(end_name, pages)
+  history = bfs(sign, pages, links, start_id, end_id)
+  path = get_ans_path(history, start_id, end_id)
+  print_path(pages, path)
 
 if __name__ == '__main__':
-  main("Google","カレー")
+  main("Google","パワードスーツ")
