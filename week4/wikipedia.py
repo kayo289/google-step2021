@@ -25,7 +25,10 @@ def get_ans_path(history, start_id, end_id):
                 path.insert(0,item[0])
                 target = item[0]
                 break
-    return path[1:]
+    if target == -1:
+      return path[1:]
+    else:
+      return path
 
 def read_pages():
   pages = {}
