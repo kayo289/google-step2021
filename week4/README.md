@@ -23,12 +23,12 @@
 
 ### 実行時
 [wikipedia_data.zip](https://drive.google.com/file/d/1zqtjSb-ZoR4rzVUWZrjNSES5GKJhYmmH/view?usp=sharing) をダウンロードして解凍し、以下のようなディレクトリ構成にしてください。
-
-├── data
-│   ├── links.txt
-│   └── pages.txt
-└── wikipedia.py
-読み込むlinksファイルと、pagesファイルは、コード内で指示しています。そのため変更したい際にはコード内で読み込むファイルの変更をしてください。
+ 
+├── data 
+│   ├── links.txt 
+│   └── pages.txt 
+└── wikipedia.py 
+読み込むlinksファイルと、pagesファイルは、コード内で指示しています。そのため変更したい際にはコード内で読み込むファイルの変更をしてください。 
   
 ### 結果
 * "Google"から"渋谷"(4分で出力された)
