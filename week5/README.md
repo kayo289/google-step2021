@@ -4,8 +4,6 @@
 https://github.com/hayatoito/google-step-tsp
 
 ## 回答
-回答ファイルはsolver_update.py
+回答ファイルはsolver_update.pyに記述しています。
 
-greedy + 2-opt
-
-greedyで求めたpathを、2-opt法で改良していった。
+greedyで求めたpathを、2-opt法で改良していきました。
