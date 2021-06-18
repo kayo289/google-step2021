@@ -2,6 +2,7 @@
 https://github.com/hikalium/malloc_challenge/tree/main/real_malloc
 
 # 回答
+read_malloc/malloc.cに記載しました
 best-fitの結果は以下のようになった
 
 ```
