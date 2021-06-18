@@ -3,6 +3,10 @@ https://github.com/hikalium/malloc_challenge/tree/main/real_malloc
 
 # 回答
 read_malloc/malloc.cに記載しました。
+
+## 比較結果
+best-fit,worst-fit,first-fitを比較した結果、以下のようになりました。
+
 best-fitの結果は以下のようになった
 ```
 Challenge 1: simple malloc => my malloc
@@ -49,3 +53,13 @@ Time: 20247 ms => 580099 ms
 Utilization: 15% => 7%
 ==================================
 ```
+
+## 考察
+
+* challenge3~4において、best-fitのUtilizationの割合が、worst-fitやfirst-fitと比べ、非常に高かった
+* best-fitと比べ、worst-fitのほうが時間がかかった用に思える
+* best-fitと比べ、worst-fitのほうが確保可能なヒープが断片的になる
+
+## 疑問
+* Utilizationは低い方が活用されているパーセンテージが低いということだろうか
+* Utilizationの値が分からないので、どちらが効率的な結果になったのかが分からない
