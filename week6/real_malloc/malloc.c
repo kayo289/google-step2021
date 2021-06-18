@@ -126,45 +126,45 @@ void *my_malloc(size_t size) {
     //            buffer_size
 
     // best-fit
-    // size_t min_size=metadata->size;
-    // metadata_t *best_metadata = NULL;
-    // metadata_t *prev_best_metadata = NULL;
-    // while (metadata) {
-
-    //   if (metadata->size >= size) {
-    //     if (min_size > metadata->size) {
-    //       min_size = metadata->size;
-    //       best_metadata=metadata;
-    //       prev_best_metadata=prev;
-    //     }
-    //   }
-    //   prev = metadata;
-    //   metadata = metadata->next;
-    // }
-    // if (best_metadata) {
-    //   prev=prev_best_metadata;
-    //   metadata=best_metadata;
-    // }
-    // worst-fit
-    size_t max_size=metadata->size;
-    metadata_t *worst_metadata = NULL;
-    metadata_t *prev_worst_metadata = NULL;
+    size_t min_size=metadata->size;
+    metadata_t *best_metadata = NULL;
+    metadata_t *prev_best_metadata = NULL;
     while (metadata) {
 
       if (metadata->size >= size) {
-        if (max_size < metadata->size) {
-          max_size = metadata->size;
-          worst_metadata=metadata;
-          prev_worst_metadata=prev;
+        if (min_size > metadata->size) {
+          min_size = metadata->size;
+          best_metadata=metadata;
+          prev_best_metadata=prev;
         }
       }
       prev = metadata;
       metadata = metadata->next;
     }
-    if (worst_metadata) {
-      prev=prev_worst_metadata;
-      metadata=worst_metadata;
+    if (best_metadata) {
+      prev=prev_best_metadata;
+      metadata=best_metadata;
     }
+    // worst-fit
+    // size_t max_size=metadata->size;
+    // metadata_t *worst_metadata = NULL;
+    // metadata_t *prev_worst_metadata = NULL;
+    // while (metadata) {
+
+    //   if (metadata->size >= size) {
+    //     if (max_size < metadata->size) {
+    //       max_size = metadata->size;
+    //       worst_metadata=metadata;
+    //       prev_worst_metadata=prev;
+    //     }
+    //   }
+    //   prev = metadata;
+    //   metadata = metadata->next;
+    // }
+    // if (worst_metadata) {
+    //   prev=prev_worst_metadata;
+    //   metadata=worst_metadata;
+    // }
 
     size_t buffer_size = 4096;
     metadata_t *metadata =
